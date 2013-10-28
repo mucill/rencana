@@ -1,4 +1,4 @@
 Perencanaan
 ===========
 
-Only My Other Personal Project - MIT Lisence
+Personal Project - MIT Lisence
