@@ -10,8 +10,9 @@ class VisiController extends \BaseController {
 	public function index()
 	{
 		$script = '<script src="'.URL::asset('assets/js/modules/visi.script.js').'"></script>';
-		$visis = DB::table('visi')->orderBy('tahun')->paginate(10);
-		return View::make('visi',array('title'=>'Visi'))->with(array('visis' => $visis, 'script' => $script));
+		$visis 	= DB::table('visi')->orderBy('tahun')->paginate(10);
+		$tahuns = DB::table('tahun')->orderBy('tahun')->get();
+		return View::make('visi',array('title'=>'Visi'))->with(array('visis' => $visis, 'script' => $script, 'tahuns' => $tahuns));
 	}
 
 	/**

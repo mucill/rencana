@@ -1,9 +1,9 @@
 @extends('layout')
 @section('content')
 <h1 class="page-header">
-	Visi <a href="#myModal" data-toggle="modal" class="btn btn-sm btn-warning">Tambah</a>
+	Misi <a href="#myModal" data-toggle="modal" class="btn btn-sm btn-warning">Tambah</a>
 </h1>
-@if(count($visis) == 0)
+@if(count($misis) == 0)
 <div class="alert alert-info">
 	Belum Ada Data
 </div>
@@ -14,7 +14,7 @@
 			<tr>
 				<th>#</th>
 				<th>Visi</th>
-				<th>Tahun</th>
+				<th>Misi</th>
 				<th>Aksi</th>
 			</tr>
 		</thead>
@@ -22,60 +22,56 @@
 			<tr>
 				<th>#</th>
 				<th>Visi</th>
-				<th>Tahun</th>
+				<th>Misi</th>
 				<th>Aksi</th>
 			</tr>
 		</tfoot>
 		<tbody>
 			<?php $i = 1 ;?>
-			@foreach ($visis as $visi)
+			@foreach ($misis as $misi)
 			<tr>
 				<td>{{ $i++ }}</td>
-				<td>{{ $visi->visi }}</td>
-				<td>{{ $visi->tahun }}</td>
+				<td>{{ $misi->tahun . ' - '. $misi->visi }}</td>
+				<td>{{ $misi->misi }}</td>
 				<td width="15%">
-					<a href="visi/destroy/{{ $visi->id_visi }}" class="btn btn-xs btn-warning delete">Hapus</a>
-					<a href="visi/edit/{{ $visi->id_visi }}" class="btn btn-xs btn-default edit">Ubah</a>
+					<a href="misi/destroy/{{ $misi->id_misi }}" class="btn btn-xs btn-warning delete">Hapus</a>
+					<a href="misi/edit/{{ $misi->id_misi }}" class="btn btn-xs btn-default edit">Ubah</a>
 				</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
 </div>
-<?php echo $visis->links(); ?>
+<?php echo $misis->links(); ?>
 @endif
 
 <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form action="visi/store" class="form-horizontal" role="form">
+<form action="misi/store" class="form-horizontal" role="form">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title">Visi</h4>
+      <h4 class="modal-title">Misi</h4>
     </div>
     <div class="modal-body">
 		<div class="form-group">
-			<label for="visi" class="col-lg-2 control-label">Visi</label>
+			<label for="tahun" class="col-lg-2 control-label">Visi</label>
 			<div class="col-lg-10">
-				<textarea name="visi" id="visi" rows="3" class="form-control" required></textarea>
+				@if (count($visis) > 0 )
+				<select name="id_visi" id="id_visi" class="form-control">
+					@foreach($visis as $visi)
+					<option value="{{ $visi->id_visi }}">{{ $visi->tahun .' - '. $visi->visi }}</option>
+					@endforeach
+				</select>
+				@else 
+				<em class="text-muted">Belum Ada Data</em>
+				@endif
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="tahun" class="col-lg-2 control-label">Digunakan Tahun</label>
+			<label for="misi" class="col-lg-2 control-label">Misi</label>
 			<div class="col-lg-10">
-				@if (count($tahuns) > 0)
-				<select name="tahun" id="tahun" class="form-control">
-					@foreach ($tahuns as $tahun)
-					@if ($tahun->active == 1)
-					<option value="{{ $tahun->tahun }}" selected>{{ $tahun->tahun }} - Aktif</option>
-					@else
-					<option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>					
-					@endif
-					@endforeach
-				</select>
-				@else
-				<em class="text-muted">Belum Ada Data</em>
-				@endif
+				<textarea name="misi" id="misi" rows="3" class="form-control" required></textarea>
 			</div>
 		</div>
     </div>

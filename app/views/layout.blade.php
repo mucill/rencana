@@ -1,3 +1,10 @@
+<?php
+header("Expires: Tue, 03 Jul 2001 06:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,15 +37,32 @@
 
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Dashboard</a></li>
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Dasar</a>
-              <ul class="dropdown-menu">
-                <li><a href="tahun">Tahun</a></li>
-                <li><a href="visi">Visi</a></li>
-                <li><a href="misi">Misi</a></li>
-                <li><a href="tujuan">Tujuan &amp; Sasaran</a></li>
-                <li><a href="indikator">Indikator</a></li>
+            <li><a href="/">Dashboard</a></li>
+            <li class="dropdown">
+              <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Data Dasar <b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="tahun">Tahun</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="visi">Visi</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="misi">Misi</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="tujuan">Tujuan</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="sasaran">Sasaran</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="indikator">Indikator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Usulan<b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="tahun">Kecamatan</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="visi">SKPD</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">RKPD<b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="tahun">Rancangan</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="visi">Rancangan Akhir</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="visi">Finalisasi RKPD</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1"  href="visi">Finalisasi Renja</a></li>
               </ul>
             </li>
           </ul>
